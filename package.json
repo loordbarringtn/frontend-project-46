@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Проект вычислитель отличий",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loordbarringtn/frontend-project-46.git"
+  },
+  "author": "Lord Barrington",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "gendiff": "gendiff.js"
+  },
+  "bugs": {
+    "url": "https://github.com/loordbarringtn/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/loordbarringtn/frontend-project-46#readme",
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
