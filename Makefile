@@ -1,5 +1,6 @@
 install:
 	npm ci
+
 gendiff:
 	@if ! command -v gendiff &> /dev/null; then \
 		echo "gendiff not found. Linking..."; \
@@ -7,6 +8,7 @@ gendiff:
 	else \
 		echo "gendiff already linked."; \
 	fi
-	node gendiff.js
+	node bin/gendiff.js
+
 publish:
 	npm publish --dry-run
