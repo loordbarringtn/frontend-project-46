@@ -1,8 +1,19 @@
-/node_modules/
-/.temp/
-/temp.js
-/test.cast
-/coverage/
-/Notes.txt
-/.idea/
-/temp/
+# Node modules
+node_modules/
+
+# Temporary files and directories
+temp/
+*.temp
+*.tmp
+
+# Coverage reports
+coverage/
+
+# IDE and editor settings
+.idea/
+.DS_Store
+
+# Test and development files
+*.cast
+*.log
+Notes.txt
