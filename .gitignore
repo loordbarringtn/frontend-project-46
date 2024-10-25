@@ -1,0 +1,8 @@
+/node_modules/
+/.temp/
+/temp.js
+/test.cast
+/coverage/
+/Notes.txt
+/.idea/
+/temp/
