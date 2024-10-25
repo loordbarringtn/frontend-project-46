@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Проект вычислитель отличий",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/loordbarringtn/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "fs.js": "^0.0.1",
+    "js-yaml": "^4.1.0",
+    "path.js": "^2.0.0"
   }
 }
