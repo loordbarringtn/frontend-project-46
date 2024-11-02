@@ -1,6 +1,7 @@
 import path from 'path';
 import parseFile from './parser.js';
 import getObjectDiff from './objectDiff.js';
+import makeTree from "./makeTree.js";
 
 const gendiff = (filepath1, filepath2, options) => {
     const absolutePath1 = path.resolve(process.cwd(), filepath1);
@@ -14,7 +15,8 @@ const gendiff = (filepath1, filepath2, options) => {
         console.log(data1);
         console.log(data2);
 
-        console.log(getObjectDiff(data1, data2));
+        const objectDiffs = getObjectDiff(data1, data2);
+        console.log(makeTree(objectDiffs));
 
     } catch (err) {
         console.error(`Error: ${err.message}`);
