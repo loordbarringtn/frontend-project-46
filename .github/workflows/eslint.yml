@@ -1,2 +1,19 @@
-- name: ESLint Test
-  uses: abdulrehman-11/eslint-action@latest
+name: ESLint Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4g
+
+      - name: ESLint Test
+        uses: abdulrehman-11/eslint-action@latest
