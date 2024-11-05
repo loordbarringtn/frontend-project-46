@@ -3,7 +3,7 @@ import parseFile from './parser.js';
 import getObjectDiff from './objectDiff.js';
 import makeTree from "./makeTree.js";
 
-const gendiff = (filepath1, filepath2, options) => {
+const gendiff = (filepath1, filepath2) => {
     const absolutePath1 = path.resolve(process.cwd(), filepath1);
     const absolutePath2 = path.resolve(process.cwd(), filepath2);
 

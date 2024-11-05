@@ -5,9 +5,9 @@ const getObjectDiff = (obj1, obj2) => {
     const obj2Keys = Object.keys(obj2);
     const allKeys = _.union(obj1Keys, obj2Keys);
     const acc = (acc, key) => {
-        if (obj1.hasOwnProperty(key) && !obj2.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(obj1, key) && !Object.prototype.hasOwnProperty.call(obj2, key)) {
             acc.push({ key, value: obj1[key], status: "deleted" });
-        } else if (!obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key)) {
+        } else if (!Object.prototype.hasOwnProperty.call(obj1, key) && Object.prototype.hasOwnProperty.call(obj2, key)) {
             acc.push({ key, value: obj2[key], status: "added" });
         } else if (obj1[key] !== obj2[key]) {
             acc.push({ key, value: { from: obj1[key], to: obj2[key] }, status: "changed" });
