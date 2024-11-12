@@ -4,7 +4,7 @@
   "description": "Проект вычислитель отличий",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "eslint": "^9.14.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
     "globals": "^15.12.0",
     "jest": "^29.7.0"
   }
