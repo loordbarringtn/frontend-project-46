@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/loordbarringtn/frontend-project-46.git"
@@ -28,6 +31,7 @@
     "path.js": "^2.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.14.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
