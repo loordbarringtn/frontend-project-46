@@ -35,9 +35,13 @@ jobs:
           cache: 'npm'
       - run: make install
       - run: make lint
-      - run: NODE_OPTIONS=--experimental-vm-modules make test
+      - run: |
+          export NODE_OPTIONS=--experimental-vm-modules
+          make test
       # Run tests and generate coverage
-      - run:  NODE_OPTIONS=--experimental-vm-modules make test-coverage
+      - run: |
+          export NODE_OPTIONS=--experimental-vm-modules
+          make test-coverage
       # Verify that lcov.info exists
       - name: Verify lcov.info
         run: ls -l coverage/lcov.info
@@ -49,7 +53,9 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: NODE_OPTIONS=--experimental-vm-modules make test-coverage
+          coverageCommand: |
+            export NODE_OPTIONS=--experimental-vm-modules
+            make test-coverage
           debug: true
 
 
