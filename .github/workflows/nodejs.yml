@@ -36,6 +36,11 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
+      # Run tests and generate coverage
+      - run: make test-coverage
+      # Verify that lcov.info exists
+      - name: Verify lcov.info
+      - run: ls -l coverage/lcov.info
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
