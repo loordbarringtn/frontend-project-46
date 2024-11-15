@@ -37,7 +37,7 @@ jobs:
       - run: make lint
       - run: make test
       # Run tests and generate coverage
-      - run: make test-coverage
+      - run:  NODE_OPTIONS=--experimental-vm-modules make test-coverage
       # Verify that lcov.info exists
       - name: Verify lcov.info
         run: ls -l coverage/lcov.info
