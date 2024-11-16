@@ -9,21 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Use gendiff ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
       - run: make install
       - run: make lint
       - run: make test
+
+      - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
         uses: paambaati/codeclimate-action@v5.0.0
-        # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          NODE_OPTIONS: --experimental-vm-modules  # Добавляем NODE_OPTIONS сюда
+          NODE_OPTIONS: --experimental-vm-modules  # Добавлен флаг для NODE_OPTIONS
         with:
           coverageCommand: make test-coverage
           debug: true
