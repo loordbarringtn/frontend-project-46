@@ -1,4 +1,4 @@
-name: gendiff
+name: test and coverage
 
 on:
   - push
@@ -17,6 +17,9 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
+      - name: Run tests with NODE_OPTIONS
+        run: |
+          NODE_OPTIONS=--experimental-vm-modules npx jest --coverage
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
