@@ -4,7 +4,7 @@
   "description": "Проект вычислитель отличий",
   "main": "src/index.js",
   "scripts": {
-    "test": "npx jest"
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest"
   },
   "repository": {
     "type": "git",
