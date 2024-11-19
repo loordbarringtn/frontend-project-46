@@ -1,42 +1,21 @@
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { describe } from '@jest/globals';
 import getObjectDiff from '../src/objectDiff.js';
 
-describe('getObjectDiff', () => {
-  test('добавление нового ключа', () => {
-    const obj1 = { id: 1, name: 'Math' };
-    const obj2 = { id: 1, name: 'Math', level: 'advanced' };
+// Определяем __dirname
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFileContent = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
-    const expected = [
-      { key: 'id', value: 1, status: 'unchanged' },
-      { key: 'name', value: 'Math', status: 'unchanged' },
-      { key: 'level', value: 'advanced', status: 'added' },
-    ];
+describe('getObjectDiff function test', () => {
+  test('сравнение плоских файлов', () => {
+    const file1 = JSON.parse(getFileContent('file1.json')); // Преобразуем строку в объект
+    const file2 = JSON.parse(getFileContent('file2.json')); // Преобразуем строку в объект
+    const result = JSON.parse(getFileContent('test1Result.json')); // Результат тоже преобразуем в объект
 
-    expect(getObjectDiff(obj1, obj2)).toEqual(expected);
-  });
-
-  test('удаление ключа', () => {
-    const obj1 = { id: 1, name: 'Math', level: 'beginner' };
-    const obj2 = { id: 1, name: 'Math' };
-
-    const expected = [
-      { key: 'id', value: 1, status: 'unchanged' },
-      { key: 'name', value: 'Math', status: 'unchanged' },
-      { key: 'level', value: 'beginner', status: 'deleted' },
-    ];
-
-    expect(getObjectDiff(obj1, obj2)).toEqual(expected);
-  });
-
-  test('изменение значения ключа', () => {
-    const obj1 = { id: 1, name: 'Math', level: 'beginner' };
-    const obj2 = { id: 1, name: 'Math', level: 'advanced' };
-
-    const expected = [
-      { key: 'id', value: 1, status: 'unchanged' },
-      { key: 'name', value: 'Math', status: 'unchanged' },
-      { key: 'level', value: { from: 'beginner', to: 'advanced' }, status: 'changed' },
-    ];
-
-    expect(getObjectDiff(obj1, obj2)).toEqual(expected);
+    // Сравниваем с ожидаемым результатом
+    expect(getObjectDiff(file1, file2)).toEqual(result);
   });
 });
