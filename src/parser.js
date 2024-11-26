@@ -6,15 +6,12 @@ const parseFile = (filepath) => {
   const extname = path.extname(filepath).toLowerCase();
   const fileContent = fs.readFileSync(filepath, 'utf-8');
 
-  switch (extname) {
-    case '.json':
-      return JSON.parse(fileContent);
-    case '.yaml':
-    case '.yml':
-      return yaml.load(fileContent);
-    default:
-      throw new Error(`Unsupported file format: ${extname}`);
+  if (extname === '.json') {
+    return JSON.parse(fileContent);
+  } if (extname === '.yaml' || extname === '.yml') {
+    return yaml.load(fileContent);
   }
+  throw new Error(`Unsupported file format: ${extname}`);
 };
 
 export default parseFile;
