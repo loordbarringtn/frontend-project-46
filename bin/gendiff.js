@@ -9,7 +9,6 @@ program
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish') // Указание форматера по умолчанию
   .action((filepath1, filepath2, options) => {
-    console.log(`Filepath1: ${filepath1}, Filepath2: ${filepath2}, Format: ${options.format}`); // Логирование для отладки
     const diff = gendiff(filepath1, filepath2, options.format);
     console.log(diff);
   });

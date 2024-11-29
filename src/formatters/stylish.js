@@ -39,9 +39,7 @@ const stylish = (diff, depth = 1) => {
     }
   });
 
-  return lines.join('\n');
+  return `{\n${lines.join('\n')}\n${bracketIndent(depth)}}`; // Добавляем фигурные скобки здесь
 };
 
-const formatWithBraces = (diff) => `{\n${stylish(diff)}\n}`;
-
-export default formatWithBraces;
+export default stylish;
