@@ -3,7 +3,6 @@ import fs from 'fs';
 import YAML from 'yaml';
 import { fileURLToPath } from 'url';
 import { describe, test, expect } from '@jest/globals';
-import getObjectDiff from '../src/objectDiff.js';
 import gendiff from '../src/index.js';
 
 // Определяем __dirname
@@ -18,5 +17,17 @@ describe('gendiff formatters tests', () => {
 
     // Проверяем результат работы gendiff
     expect(gendiff(file1Path, file2Path, 'stylish')).toBe(expectedResult);
+  });
+
+  test('стиль stylish с YAML файлами', () => {
+    const file1Path = getFixturePath('file1.yml');
+    const file2Path = getFixturePath('file2.yml');
+    const expectedResult = getFileContent('expected_stylish_output.txt'); // Читаем эталонный результат
+
+    const file1Content = YAML.parse(file1Path); // Парсим YAML-файл 1
+    const file2Content = YAML.parse(file2Path); // Парсим YAML-файл 2
+
+    const result = gendiff(file1Content, file2Content);
+    expect(result).toBe(expectedResult);
   });
 });

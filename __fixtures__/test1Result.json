@@ -1,7 +1,0 @@
-[
-  { "key": "host", "value": "hexlet.io", "status": "unchanged" },
-  { "key": "timeout", "value": { "from": 50, "to": 20 }, "status": "changed" },
-  { "key": "proxy", "value": "123.234.53.22", "status": "deleted" },
-  { "key": "follow", "value": false, "status": "deleted" },
-  { "key": "verbose", "value": true, "status": "added" }
-]
