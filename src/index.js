@@ -15,7 +15,8 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
 
     const formatter = getFormatter(format); // Получаем нужный форматтер
     const result = formatter(diffTree); // Форматируем дерево различий
-    // console.log(`result: ${result}`); // Временно выводим результат для отладки
+
+    // console.log(JSON.stringify(diffTree, null, 2));
 
     return result; // Убедитесь, что результат возвращается
   } catch (err) {

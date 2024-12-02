@@ -10,7 +10,6 @@ const stringify = (value, depth) => {
 
   const entries = Object.entries(value)
     .map(([key, val]) => `${indent(depth + 1)}  ${key}: ${stringify(val, depth + 1)}`);
-
   return `{\n${entries.join('\n')}\n${bracketIndent(depth + 1)}}`;
 };
 
@@ -33,7 +32,7 @@ const stylish = (diff, depth = 1) => {
           `${indent(depth)}+ ${key}: ${stringify(newValue, depth)}`,
         ].join('\n');
       case 'nested':
-        return `${indent(depth)}  ${key}: {\n${stylish(children, depth + 1)}\n${bracketIndent(depth + 1)}}`;
+        return `${indent(depth)}  ${key}: ${stylish(children, depth + 1)}`;
       default:
         throw new Error(`Unknown type: ${type}`);
     }
