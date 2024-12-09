@@ -16,7 +16,7 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
     return formatter(diffTree); // Форматируем дерево различий
   } catch (err) {
     console.error(`Error: ${err.message}`);
-    process.exit(1); // Завершаем процесс с ошибкой
+    throw err;
   }
 };
 
