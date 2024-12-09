@@ -4,6 +4,9 @@ const buildDiff = (data1, data2) => {
   const keys = _.union(_.keys(data1), _.keys(data2)).sort();
 
   return keys.map((key) => {
+    const value1 = data1[key];
+    const value2 = data2[key];
+
     if (!_.has(data1, key)) {
       return { key, type: 'added', value: data2[key] };
     }
@@ -11,9 +14,6 @@ const buildDiff = (data1, data2) => {
     if (!_.has(data2, key)) {
       return { key, type: 'removed', value: data1[key] };
     }
-
-    const value1 = data1[key];
-    const value2 = data2[key];
 
     if (_.isObject(value1) && _.isObject(value2)) {
       return { key, type: 'nested', children: buildDiff(value1, value2) };

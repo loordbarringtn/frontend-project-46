@@ -49,4 +49,24 @@ describe('gendiff function formatters tests', () => {
 
     expect(gendiff(file1Content, file2Content, 'plain')).toBe(expectedResult);
   });
+
+  test('стиль json с JSON файлами', () => {
+    const file1Path = getFixturePath('file1.json');
+    const file2Path = getFixturePath('file2.json');
+    const expectedResult = getFileContent('expected_json_output.txt'); // Читаем эталонный результат
+
+    expect(gendiff(file1Path, file2Path, 'json')).toBe(expectedResult);
+  });
+
+  test('стиль json с YAML файлами', () => {
+    const file1Path = getFixturePath('file1.yml');
+    const file2Path = getFixturePath('file2.yml');
+    const expectedResult = getFileContent('expected_json_output.txt');
+
+    const file1Content = YAML.parse(file1Path); // Парсим YAML-файл 1
+    const file2Content = YAML.parse(file2Path); // Парсим YAML-файл 2
+
+    const result = gendiff(file1Content, file2Content, 'json');
+    expect(result).toBe(expectedResult);// Читаем эталонный результат
+  });
 });
