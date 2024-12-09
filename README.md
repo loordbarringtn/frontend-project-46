@@ -43,3 +43,11 @@ To select the output format:
 ```
 gendiff --format plain <path to file1> <path to file2>
 ```
+### Compare two JSON files with nested objects (stylish format):
+[![asciicast](https://asciinema.org/a/hJzhobziTkpovbCwhPHzuvMuI.svg)](https://asciinema.org/a/hJzhobziTkpovbCwhPHzuvMuI)
+
+### Compare two JSON files with nested objects (plain format):
+[![asciicast](https://asciinema.org/a/GX21jhJLSOP9DOIC8a8DFoMpf.svg)](https://asciinema.org/a/GX21jhJLSOP9DOIC8a8DFoMpf)
+
+### Compare two JSON files with nested objects (json format):
+[![asciicast](https://asciinema.org/a/knGFeByQKprx7WoN7jtdZqPlj.svg)](https://asciinema.org/a/knGFeByQKprx7WoN7jtdZqPlj)
