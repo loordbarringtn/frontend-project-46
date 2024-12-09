@@ -20,12 +20,12 @@ const runTest = (description, file1Name, file2Name, format, expectedFileName) =>
 };
 
 describe('gendiff function formatters tests', () => {
-  runTest('стиль stylish с JSON файлами', 'file1.json', 'file2.json', 'stylish', 'expected_stylish_output.txt');
-  runTest('стиль stylish с YAML файлами', 'file1.yml', 'file2.yml', 'stylish', 'expected_stylish_output.txt');
+  runTest('stylish with JSON files', 'file1.json', 'file2.json', 'stylish', 'expected_stylish_output.txt');
+  runTest('stylish with YAML files', 'file1.yml', 'file2.yml', 'stylish', 'expected_stylish_output.txt');
 
-  runTest('стиль plain с JSON файлами', 'file1.json', 'file2.json', 'plain', 'expected_plain_output.txt');
-  runTest('стиль plain с YAML файлами', 'file1.yml', 'file2.yml', 'plain', 'expected_plain_output.txt');
+  runTest('plain with JSON files', 'file1.json', 'file2.json', 'plain', 'expected_plain_output.txt');
+  runTest('plain with YAML files', 'file1.yml', 'file2.yml', 'plain', 'expected_plain_output.txt');
 
-  runTest('стиль json с JSON файлами', 'file1.json', 'file2.json', 'json', 'expected_json_output.txt');
-  runTest('стиль json с YAML файлами', 'file1.yml', 'file2.yml', 'json', 'expected_json_output.txt');
+  runTest('json with JSON files', 'file1.json', 'file2.json', 'json', 'expected_json_output.txt');
+  runTest('json with YAML files', 'file1.yml', 'file2.yml', 'json', 'expected_json_output.txt');
 });

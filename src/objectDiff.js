@@ -4,23 +4,26 @@ const getObjectDiff = (obj1, obj2) => {
   const obj1Keys = Object.keys(obj1);
   const obj2Keys = Object.keys(obj2);
   const allKeys = _.union(obj1Keys, obj2Keys);
-  const acc = (acc, key) => {
+
+  const buildResult = (result, key) => {
     if (Object.prototype.hasOwnProperty.call(obj1, key)
         && !Object.prototype.hasOwnProperty.call(obj2, key)) {
-      acc.push({ key, value: obj1[key], status: 'deleted' });
-    } else if (!Object.prototype.hasOwnProperty.call(obj1, key)
-        && Object.prototype.hasOwnProperty.call(obj2, key)) {
-      acc.push({ key, value: obj2[key], status: 'added' });
-    } else if (obj1[key] !== obj2[key]) {
-      acc.push({ key, value: { from: obj1[key], to: obj2[key] }, status: 'changed' });
-    } else {
-      acc.push({ key, value: obj1[key], status: 'unchanged' });
+      return result.concat({ key, value: obj1[key], status: 'deleted' });
     }
-    return acc; // Возвращаем аккумулятор
+
+    if (!Object.prototype.hasOwnProperty.call(obj1, key)
+        && Object.prototype.hasOwnProperty.call(obj2, key)) {
+      return result.concat({ key, value: obj2[key], status: 'added' });
+    }
+
+    if (obj1[key] !== obj2[key]) {
+      return result.concat({ key, value: { from: obj1[key], to: obj2[key] }, status: 'changed' });
+    }
+
+    return result.concat({ key, value: obj1[key], status: 'unchanged' });
   };
 
-  // Передаем начальное значение в reduce (пустой массив)
-  return allKeys.reduce(acc, []);
+  return allKeys.reduce(buildResult, []);
 };
 
 export default getObjectDiff;
