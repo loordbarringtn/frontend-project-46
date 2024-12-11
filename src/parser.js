@@ -6,12 +6,25 @@ const parseFile = (filepath) => {
   const extname = path.extname(filepath).toLowerCase();
   const fileContent = fs.readFileSync(filepath, 'utf-8');
 
-  if (extname === '.json') {
-    return JSON.parse(fileContent);
-  } if (extname === '.yaml' || extname === '.yml') {
-    return yaml.load(fileContent);
+  try {
+    if (extname === '.json') {
+      return JSON.parse(fileContent);
+    } if (extname === '.yaml' || extname === '.yml') {
+      return yaml.load(fileContent);
+    }
+    throw new Error(`Unsupported file extension: ${extname}`);
+  } catch (err) {
+    console.error(`Failed to parse ${filepath}: ${err.message}`);
+    process.exit(1);
   }
-  throw new Error(`Unsupported file format: ${extname}`);
 };
+
+//   if (extname === '.json') {
+//     return JSON.parse(fileContent);
+//   } if (extname === '.yaml' || extname === '.yml') {
+//     return yaml.load(fileContent);
+//   }
+//   throw new Error(`Unsupported file format: ${extname}`);
+// };
 
 export default parseFile;

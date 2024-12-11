@@ -41,7 +41,7 @@ gendiff <path to file1> <path to file2>
 
 To select the output format:
 ```
-gendiff --format plain <path to file1> <path to file2>
+gendiff --format <formatType> <path to file1> <path to file2>
 ```
 ### Compare two JSON files with nested objects (stylish format):
 [![asciicast](https://asciinema.org/a/hJzhobziTkpovbCwhPHzuvMuI.svg)](https://asciinema.org/a/hJzhobziTkpovbCwhPHzuvMuI)
